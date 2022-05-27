@@ -8,8 +8,9 @@ public class calculator {
     }
 
     public int divide(int a, int b) {
-        if (b == 0)
-            throw new IllegalArgumentException();
+        if (b == 0){
+            throw new IllegalArgumentException("Division by 0 is not allowed");
+        }
 
         return a / b;
     }

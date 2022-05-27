@@ -1,9 +1,22 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class calculatorTest {
+public class 
+calculatorTest {
+
+    @BeforeClass
+    public static void BeforeClassSetup() throws Exception{
+    }
+
+    @Before
+    public void setup() throws Exception{
+    }
 
     @Test
     public void testSubtract(){
@@ -36,8 +49,27 @@ public class calculatorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testDivideWith0Denominator(){
+        int a = 10;
+        int b = 0;
+
+        try {
+            calculator cal = new calculator();
+            cal.divide(a,b);
+            fail("Expected an illegalArgumentException to be thrown");
+        } catch (IllegalArgumentException ae){
+            assertEquals("Division by 0 is not allowed", ae.getMessage());
+        } catch(Throwable t){
+            assertEquals("Expected an illegalArgumentException to be thrown", t.getMessage());
+        }
+    }
+    
     @After
-    public void tearDown() throws Exception{
-        //TODO
+    public void complete(){
+    }
+
+    @AfterClass
+    public static void stop(){
     }
 }
